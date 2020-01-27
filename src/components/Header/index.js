@@ -8,8 +8,9 @@ export default function NavBar() {
     <div className='head-container'>
       <div className='nav-bar'>
         <div className='nav-image'>
-          <NavLink to="/" className=''>
-            <img src={logo} alt='site-logo' />
+          <NavLink to="/" className='img-link'>
+            <img src={logo} alt='site-logo' />{' '}
+            <p className='logo-text'>LinkUp</p>
           </NavLink>
         </div>
         <div className='nav-links'>

@@ -14,8 +14,23 @@
     padding: 10px;
   
     .nav-image {
+      .img-link {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+
+        .logo-text {
+          font-family: Lobster;
+          font-size: 41px;
+          padding: 0;
+          color: #00ABB4;
+          }
+      }
+
       img {
         width: 50px;
+        margin-right: 10px;
+        max-height: 100px;
       }
     }
   
@@ -25,9 +40,12 @@
       justify-content: space-between;
       min-width: 300px;
       align-self: center;
+      @media (max-width: 1000px) {
+        display: none;
+      }
       
       a {
-        font: @primary-font;
+        font-family: @primary-font;
         text-decoration: none;
         font-weight: @button-font-weight;
       }
