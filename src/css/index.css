@@ -487,3 +487,22 @@ textarea {
   background-color: #01baef;
   background-image: none;
 }
+.cta-area {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100px;
+  justify-content: space-between;
+  width: 80%;
+}
+.cta-area h2 {
+  font-family: Muli;
+  font-weight: 900;
+  font-size: 31pt;
+  margin-bottom: 50px;
+  text-align: right;
+}
+.cta-area p {
+  font-family: Muli;
+  font-weight: 700;
+  font-size: 16pt;
+}
