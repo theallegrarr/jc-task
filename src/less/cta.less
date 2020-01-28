@@ -2,20 +2,23 @@
   display: flex;
   flex-direction: row;
   margin-top: 50px;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 87%;
 
   .cta-text {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 60%;
     background-color: white;
   }
 
   .cta-image {
-    float: right;
+    display: flex;
+    flex-direction: column;
+    max-width: 35%;
     animation-duration: 5s;
     animation-name: slidein;
+    margin-right: 1%;
   }
 
   @keyframes slidein {
@@ -31,7 +34,7 @@
     font-family: Muli;
     font-weight: 900;
     font-size:  48px;
-    line-height: 25px;
+    line-height: 55px;
     margin-bottom: 50px;
     text-align: right;
     color: rgb(63, 73, 83);
@@ -40,7 +43,7 @@
   h1 {
     font-family: Muli;
     font-weight: 900;
-    font-size:  78px;
+    font-size:  68px;
     margin-bottom: 50px;
     text-align: right;
     color: #00ABB4;
