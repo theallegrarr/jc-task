@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import SEO from 'react-seo-component';
 import navimage from '../../assets/user.png';
 import ctaImage from '../../assets/04.png';
+import Features from './Features';
 
 export default function LandingPage() {
 
@@ -44,6 +45,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+      <Features />
     </>
   );
 }
