@@ -3,6 +3,8 @@ import { Route, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import Landing from './components/Landing';
 import Footer from './components/Footer';
+import AuthForm from './components/Auth';
+import 'antd/dist/antd.css';
 import './css/index.css';
 
 function App() {
@@ -13,6 +15,11 @@ function App() {
         exact path='/'
         render={props => {
             return (<Landing {...props}/>)
+        }} />
+      <Route 
+        exact path='/signin'
+        render={props => {
+            return (<AuthForm {...props}/>)
         }} />
       <Footer />
     </div>
