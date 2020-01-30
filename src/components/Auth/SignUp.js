@@ -116,6 +116,7 @@ export default function SignUpForm({ props }) {
     try {
       const user = await auth.register(form, props);
       if(user.result) {
+        props.setMainInfo(user.result.userInfo);
         props.history.push('/profile');
       } else {
         setLoading(false);
