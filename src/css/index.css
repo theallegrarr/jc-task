@@ -655,10 +655,13 @@ textarea {
   font-size: 40px;
   line-height: 24px;
 }
+.features-div .wavy {
+  max-width: 90vw;
+}
 .features-div .feature-cards {
   display: flex;
   flex-flow: wrap;
-  width: 90%;
+  width: 95%;
   margin-top: 20px;
   justify-content: space-between;
 }
