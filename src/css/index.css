@@ -436,12 +436,39 @@ textarea {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background-color: white;
 }
+.head-container .ham-toggle {
+  margin-top: 20px;
+}
+@media (min-width: 1000px) {
+  .head-container .ham-toggle {
+    display: none;
+  }
+}
+.head-container .menu-box {
+  display: none;
+  flex-direction: column;
+}
+@media (min-width: 1000px) {
+  .head-container .menu-box {
+    display: none;
+  }
+}
+.head-container .menu-box a,
+.head-container .menu-box .button {
+  margin: 20px;
+}
 .head-container .nav-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 90%;
   padding: 10px;
+}
+.head-container .nav-bar p {
+  font-size: 16pt;
+  font-weight: 900;
+  color: #20bf55;
+  cursor: pointer;
 }
 .head-container .nav-bar .nav-image .img-link {
   display: flex;
@@ -460,7 +487,7 @@ textarea {
   margin-right: 10px;
   max-height: 100px;
 }
-.head-container .nav-bar .nav-links {
+.head-container .nav-links {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -468,22 +495,22 @@ textarea {
   align-self: center;
 }
 @media (max-width: 1000px) {
-  .head-container .nav-bar .nav-links {
+  .head-container .nav-links {
     display: none;
   }
 }
-.head-container .nav-bar .nav-links a {
+.head-container a {
   font-family: Muli;
   text-decoration: none;
   font-weight: 700;
 }
-.head-container .nav-bar .nav-links .a {
+.head-container .a {
   padding: 15px;
 }
-.head-container .nav-bar .nav-links .a:hover {
+.head-container .a:hover {
   color: #20bf55;
 }
-.head-container .nav-bar .nav-links .button {
+.head-container .button {
   border: none;
   color: white;
   padding: 15px;
@@ -493,11 +520,11 @@ textarea {
   transition: background-color 0.5s 0.5s, box-shadow 0.5s 0.5s;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
-.head-container .nav-bar .nav-links .button:hover {
+.head-container .button:hover {
   background-color: #21d190;
   background-image: linear-gradient(315deg, #21d190 0%, #d65bca 74%);
 }
-.head-container .nav-bar .nav-links .button:active {
+.head-container .button:active {
   background-color: #20bf55;
   background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
   box-shadow: none;
@@ -515,6 +542,11 @@ textarea {
   width: 60%;
   background-color: white;
 }
+@media (max-width: 1000px) {
+  .cta-area .cta-text {
+    width: 95%;
+  }
+}
 .cta-area .cta-image {
   display: flex;
   flex-direction: column;
@@ -522,6 +554,11 @@ textarea {
   animation-duration: 5s;
   animation-name: slidein;
   margin-right: 1%;
+}
+@media (max-width: 1000px) {
+  .cta-area .cta-image {
+    display: none;
+  }
 }
 @keyframes slidein {
   from {

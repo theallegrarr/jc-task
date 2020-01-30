@@ -53,6 +53,6 @@ export default function LandingPage() {
 
 function script(){
   setTimeout(function(){
-      if(document.getElementsByClassName('cta-image')[0])document.getElementsByClassName('cta-image')[0].style.left = '0'; // new left position is 1000px in this example
-  }, 2000); // 2000 = 2 seconds after page load
+      if(document.getElementsByClassName('cta-image')[0])document.getElementsByClassName('cta-image')[0].style.left = '0';
+  }, 2000);
 }

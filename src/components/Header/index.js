@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Hamburger from './Hamburger';
+import { Icon } from 'antd';
 import logo from '../../assets/user.png';
 
 export default function NavBar({ userInfo }) {
+  const [ham, setHam] = useState(false);
 
   return(
     <div className='head-container'>
@@ -20,7 +23,25 @@ export default function NavBar({ userInfo }) {
             className='button'>{userInfo.name ? 'Sign Out' : 'Sign In/Register'}
           </NavLink>
         </div>
+        <p 
+          className='ham-toggle'
+          onClick={() => script(setHam)}>
+          {ham ? 'X' : <Icon type='menu' />}
+        </p>
       </div>
+        <Hamburger userInfo={userInfo} />
     </div>
   )
+}
+
+function script(setHam){
+  const display = document.getElementsByClassName('menu-box')[0].style.display;
+
+  if(display === 'flex') { 
+    setHam(false);
+    document.getElementsByClassName('menu-box')[0].style.display = 'none';
+  } else {
+    setHam(true);
+    document.getElementsByClassName('menu-box')[0].style.display = 'flex';
+  }
 }
