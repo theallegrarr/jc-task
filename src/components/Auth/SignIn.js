@@ -58,6 +58,7 @@ export default function SignInForm({props}) {
     try {
       const user = await auth.login(form, props);
       if(user.result) {
+        props.setMainInfo(user.result.userInfo);
         props.history.push('/profile');
       } else {
         setLoading(false);

@@ -6,12 +6,38 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   background-color: white;
 
+  .ham-toggle {
+    margin-top: 20px;
+    @media (min-width: 1000px) {
+      display: none;
+    }
+  }
+
+  .menu-box {
+    display: none;
+    flex-direction: column;
+    @media (min-width: 1000px) {
+      display: none;
+    }
+
+    a, .button {
+      margin: 20px;
+    }
+  }
+
   .nav-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 90%;
     padding: 10px;
+
+    p {
+      font-size: 16pt;
+      font-weight: 900;
+      color: #20bf55;
+      cursor: pointer;
+    }
   
     .nav-image {
       .img-link {
@@ -34,51 +60,50 @@
         max-height: 100px;
       }
     }
-  
-    .nav-links {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      min-width: 300px;
-      align-self: center;
-      @media (max-width: 1000px) {
-        display: none;
-      }
-      
-      a {
-        font-family: @primary-font;
-        text-decoration: none;
-        font-weight: @button-font-weight;
-      }
+  }
 
-      .a {
-        padding: @button-padding;
-        
-        &:hover {
-          color: #20bf55;
-        }
-      }
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 300px;
+    align-self: center;
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  }
+  a {
+    font-family: @primary-font;
+    text-decoration: none;
+    font-weight: @button-font-weight;
+  }
 
-      .button {
-        border: none;
-        color: white;
-        padding: @button-padding;
-        border-radius: @border-radius;
-        background-color: #20bf55;
-        background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
-        transition: background-color 0.5s 0.5s, box-shadow 0.5s 0.5s;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  .a {
+    padding: @button-padding;
+    
+    &:hover {
+      color: #20bf55;
+    }
+  }
 
-        &:hover {
-          background-color: #21d190;
-          background-image: linear-gradient(315deg, #21d190 0%, #d65bca 74%);
-        }
-        &:active {
-          background-color: #20bf55;
-          background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
-          box-shadow: none;
-        }
-      }
+  .button {
+    border: none;
+    color: white;
+    padding: @button-padding;
+    border-radius: @border-radius;
+    background-color: #20bf55;
+    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    transition: background-color 0.5s 0.5s, box-shadow 0.5s 0.5s;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+    &:hover {
+      background-color: #21d190;
+      background-image: linear-gradient(315deg, #21d190 0%, #d65bca 74%);
+    }
+    &:active {
+      background-color: #20bf55;
+      background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+      box-shadow: none;
     }
   }
 }
