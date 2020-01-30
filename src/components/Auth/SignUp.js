@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { DatePicker } from 'antd';
 import validate from 'validate.js';
+import * as auth from './authHelper';
+import { Spin, Icon, message, DatePicker } from 'antd';
+import UploadImage from './UploadBox';
 
 const schema = {
   name: {
@@ -65,7 +67,7 @@ const schema = {
   },
 };
 
-export default function SignUpForm() {
+export default function SignUpForm({ props }) {
   const [ form, setForm ] = useState({
     name: '',
     phone_number: 0,
@@ -74,23 +76,30 @@ export default function SignUpForm() {
     date_of_birth: new Date(),
     security_answer_1: '',
     security_answer_2: '',
-    security_answer_3: '',
+    security_answer_3: ''
+  });
+  const [errorState, setErrors] = useState({
     touched: {}
   });
-  const [errorState, setErrors] = useState({});
+  const [ loading, setLoading ] = useState(false);
 
-  const updateForm = (key, value) => setForm({ 
+  const updateForm = (key, value) => {
+    setForm({ 
     ...form, 
     [key]: value, 
-    touched: {
-      ...form.touched,
-      [key]: true
-    } }); 
+    });
+
+    setErrors({
+      ...errorState,
+      touched: {
+        ...errorState.touched,
+        [key]: true
+      }
+    })
+  }
   const onChange = (date, dateString) => {
     setForm({ ...form, date_of_birth: new Date(dateString) });
-    console.log(errorState);
   }
-
   useEffect(() => {
     const errors = validate(form, schema);
 
@@ -101,7 +110,25 @@ export default function SignUpForm() {
     }));
   }, [form])
 
-  const hasError = field => !!(form.touched[field] && errorState.errors[field]);
+  const hasError = field => !!(errorState.touched[field] && errorState.errors[field]);
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const user = await auth.register(form, props);
+      if(user.result) {
+        props.history.push('/profile');
+      } else {
+        setLoading(false);
+        message.error(user.message);
+      }
+    } catch (error) {
+      setLoading(false);
+      message.error('unknown error occurred');
+    }
+  }
+  const antIcon = <Icon 
+    type="loading" 
+    style={{ fontSize: 24, color: '#fff' }} spin />;
 
   return(
     <div className='form-container'>
@@ -175,10 +202,12 @@ export default function SignUpForm() {
       {
         hasError('security_answer_3') ? <p style={{ color: 'hsla(359,98%,68%,1)' }}>{errorState.errors.security_answer_3[0]}</p> : null
       }
+      <UploadImage />
       <div className='form-buttons'>
         <button
           disabled={Object.size(errorState.errors) > 0 ? true : false }
-        >Register</button>
+          onClick={handleSubmit}
+        >{loading && <Spin indicator={antIcon} />}{' '}Register</button>
       </div>
     </div>
   )

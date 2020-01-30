@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import { NavLink } from 'react-router-dom';
 
 export default function footer(){
   
@@ -14,7 +13,7 @@ export default function footer(){
         <address>
           5534 Somewhere In. The World 22193-10212 <br></br>
               
-          <a className="footer__btn" href="mailto:example@linkup.com">Email Us</a>
+          <NavLink className="footer__btn" to="mailto:example@linkup.com">Email Us</NavLink>
         </address>
       </div>
   
@@ -24,15 +23,15 @@ export default function footer(){
 
         <ul className="nav__ul">
           <li>
-            <a href="#">Online</a>
+            <NavLink to="#">Online</NavLink>
           </li>
 
           <li>
-            <a href="#">Print</a>
+            <NavLink to="#">Print</NavLink>
           </li>
               
           <li>
-            <a href="#">Alternative Ads</a>
+            <NavLink to="#">Alternative Ads</NavLink>
           </li>
         </ul>
       </li>
@@ -42,27 +41,27 @@ export default function footer(){
         
         <ul className="nav__ul nav__ul--extra">
           <li>
-            <a href="#">Hardware Design</a>
+            <NavLink to="#">Hardware Design</NavLink>
           </li>
           
           <li>
-            <a href="#">Software Design</a>
+            <NavLink to="#">Software Design</NavLink>
           </li>
           
           <li>
-            <a href="#">Digital Signage</a>
+            <NavLink to="#">Digital Signage</NavLink>
           </li>
           
           <li>
-            <a href="#">Automation</a>
+            <NavLink to="#">Automation</NavLink>
           </li>
           
           <li>
-            <a href="#">Artificial Intelligence</a>
+            <NavLink to="#">Artificial Intelligence</NavLink>
           </li>
           
           <li>
-            <a href="#">IoT</a>
+            <NavLink to="#">IoT</NavLink>
           </li>
         </ul>
       </li>
@@ -72,15 +71,15 @@ export default function footer(){
         
         <ul className="nav__ul">
           <li>
-            <a href="#">Privacy Policy</a>
+            <NavLink to="#">Privacy Policy</NavLink>
           </li>
           
           <li>
-            <a href="#">Terms of Use</a>
+            <NavLink to="#">Terms of Use</NavLink>
           </li>
           
           <li>
-            <a href="#">Sitemap</a>
+            <NavLink to="#">Sitemap</NavLink>
           </li>
         </ul>
       </li>

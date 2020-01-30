@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Landing from './components/Landing';
 import Footer from './components/Footer';
 import AuthForm from './components/Auth';
+import Profile from './components/Profile';
 import 'antd/dist/antd.css';
 import './css/index.css';
 
@@ -20,6 +21,11 @@ function App() {
         exact path='/signin'
         render={props => {
             return (<AuthForm {...props}/>)
+        }} />
+      <Route 
+        exact path='/profile'
+        render={props => {
+            return (<Profile {...props}/>)
         }} />
       <Footer />
     </div>
