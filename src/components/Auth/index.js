@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-export default function MainForm() {
+export default function MainForm(props) {
   const [ mode, setMode ] = useState({
     signin: true,
     signup: false,
@@ -10,7 +10,7 @@ export default function MainForm() {
 
   const setSignIn = () => setMode({ signin: true, signup: false });
   const setSignUp = () => setMode({ signin: false, signup: true });
-  
+
   return(
     <>
       <div className='switch'>
@@ -26,7 +26,7 @@ export default function MainForm() {
         }}>Sign Up</p>
       </div>
       {
-        mode.signin ? <SignIn /> : <SignUp />
+        mode.signin ? <SignIn props={props} /> : <SignUp props={props} />
       }
     </>
   );

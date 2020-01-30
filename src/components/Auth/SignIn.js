@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import validate from 'validate.js';
+import { Spin, Icon, message } from 'antd';
+import * as auth from './authHelper';
 
 const schema = {
   email: {
@@ -19,7 +21,8 @@ const schema = {
   },
 }
 
-export default function SignInForm() {
+export default function SignInForm({props}) {
+  const [ loading, setLoading ] = useState(false);
   const [ form, setForm ] = useState({
     email: '',
     password: '',
@@ -46,6 +49,25 @@ export default function SignInForm() {
   }, [form]);
 
   const hasError = field => !!(form.touched[field] && errorState.errors[field]);
+  const antIcon = <Icon 
+    type="loading" 
+    style={{ fontSize: 24, color: '#fff' }} spin />;
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const user = await auth.login(form, props);
+      if(user.result) {
+        props.history.push('/profile');
+      } else {
+        setLoading(false);
+        message.error(user.message);
+      }
+    } catch (error) {
+      setLoading(false);
+      message.error('unknown error occurred');
+    }
+  }
 
   return(
     <div className='form-container'>
@@ -58,9 +80,10 @@ export default function SignInForm() {
       {
         hasError('email') ? <p style={{ color: 'hsla(359,98%,68%,1)' }}>{errorState.errors.email[0]}</p> : null
       }
-      <label type='password'>Password </label>
+      <label>Password </label>
       <input
         name='password'
+        type='password'
         onChange={(e) => updateForm('password', e.target.value)}
       >
       </input>
@@ -70,7 +93,8 @@ export default function SignInForm() {
       <div className='form-buttons'>
         <button
           disabled={Object.size(errorState.errors) > 0 ? true : false }
-        >Sign In</button>
+          onClick={handleSubmit}
+    >{loading && <Spin indicator={antIcon} />}{' '}Sign In</button>
       </div>
     </div>
   )

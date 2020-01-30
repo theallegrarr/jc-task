@@ -811,7 +811,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 5vh;
-  min-height: 70vh;
+  min-height: 50vh;
   margin-bottom: 100px;
 }
 .form-container label {
@@ -861,4 +861,80 @@ body {
 }
 .form-buttons button:disabled {
   cursor: not-allowed;
+}
+.profile-container {
+  min-height: 70vh;
+  width: 50%;
+  min-width: 300px;
+  padding-top: 50px;
+}
+.profile-container .profile-view {
+  display: flex;
+  flex-flow: wrap;
+}
+.profile-container .profile-view div {
+  margin: 20px;
+}
+.profile-container .profile-view .image-box {
+  width: 150px;
+}
+.profile-container .profile-view .image-box img {
+  width: 100%;
+  border-radius: 100px;
+  border: 1px solid white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.profile-container h3 {
+  font-family: Muli;
+  font-weight: bold;
+  color: gray;
+  font-size: 16pt;
+  margin-top: 15px;
+}
+.profile-container h4 {
+  font-family: Muli;
+  font-weight: bold;
+  color: #20bf55;
+  font-size: 16pt;
+}
+.profile-container .button-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+.profile-container button {
+  border: none;
+  font-family: Muli;
+  font-weight: bold;
+  color: white;
+  min-width: 150px;
+  margin-left: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  transition: background-color 0.5s 0.5s, box-shadow 0.5s 0.5s;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.profile-container button:hover {
+  background-color: #21d190;
+  background-image: linear-gradient(315deg, #21d190 0%, #d65bca 74%);
+}
+.profile-container button:active {
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  box-shadow: none;
+}
+.profile-container input {
+  border: none;
+  border-bottom: 1px solid lightgray;
+  transition: border-bottom 0.2s 0.2s;
+  width: 300px;
+  min-width: 320px;
+  font-size: 14pt;
+  background: rgba(255, 255, 255, 0.8);
+}
+.profile-container input:focus {
+  border-bottom: 2px solid #20bf55;
 }
