@@ -12,12 +12,13 @@ export default function LandingPage() {
     <>
       <SEO
         title={'LinkUp'}
-        description={'Cards for All!'}
+        description={'~'}
         image={navimage}
         pathname={'/'}
         siteLanguage={'en'}
         siteLocale={'en_gb'}
         twitterUsername={'linkup'}
+        titleTemplate={' '}
       />
       <Helmet>
         <title>{`LinkUp - Cards for All!`}</title>
@@ -52,6 +53,6 @@ export default function LandingPage() {
 
 function script(){
   setTimeout(function(){
-      document.getElementsByClassName('cta-image')[0].style.left = '0'; // new left position is 1000px in this example
+      if(document.getElementsByClassName('cta-image')[0])document.getElementsByClassName('cta-image')[0].style.left = '0'; // new left position is 1000px in this example
   }, 2000); // 2000 = 2 seconds after page load
 }

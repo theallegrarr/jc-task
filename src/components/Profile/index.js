@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { message, Spin, Icon } from 'antd';
+import { Helmet } from 'react-helmet';
+import SEO from 'react-seo-component';
 import ViewProfile from './ViewProfile';
 import EditProfile from './EditProfile';
 import SetAnswers from './Answers';
 import SetPassword from './Password';
 import * as auth from '../Auth/authHelper';
+import navimage from '../../assets/user.png';
 
 export default function Profile(){
   const [edit, setEdit] = useState(true);
@@ -118,6 +121,19 @@ export default function Profile(){
 
   return(
     <div className='profile-container'>
+      <SEO
+        title={'LinkUp'}
+        description={'~'}
+        image={navimage}
+        pathname={'/'}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'linkup'}
+        titleTemplate={' '}
+      />
+      <Helmet>
+        <title>{`LinkUp - My Profile`}</title>
+      </Helmet>
       <div className='button-box'>
         <button
           onClick={() => submitForm(details.id, form)}

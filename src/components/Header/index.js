@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/user.png';
 
-export default function NavBar() {
+export default function NavBar({ userInfo }) {
 
   return(
     <div className='head-container'>
@@ -15,7 +15,10 @@ export default function NavBar() {
         </div>
         <div className='nav-links'>
           <NavLink to="/profile" className='a'>Profile</NavLink>
-          <NavLink to="/signin" className='button'>Sign In/Register</NavLink>
+          <NavLink 
+            to={userInfo.name ? "/signout" : "/signin"} 
+            className='button'>{userInfo.name ? 'Sign Out' : 'Sign In/Register'}
+          </NavLink>
         </div>
       </div>
     </div>
