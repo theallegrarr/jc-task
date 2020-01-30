@@ -884,7 +884,8 @@ body {
   border: 1px solid white;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
-.profile-container h3 {
+.profile-container h3,
+.profile-container label {
   font-family: Muli;
   font-weight: bold;
   color: gray;
@@ -937,4 +938,17 @@ body {
 }
 .profile-container input:focus {
   border-bottom: 2px solid #20bf55;
+}
+.profile-container .set-password {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.profile-container .set-password div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.profile-container .set-password input {
+  margin-top: 15px;
 }

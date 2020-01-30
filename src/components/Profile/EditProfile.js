@@ -22,6 +22,7 @@ export default function ViewProfile({ form, setForm, updateForm }){
         date_of_birth: JSON.parse(userInfo).date_of_birth
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onChange = (date, dateString) => {
