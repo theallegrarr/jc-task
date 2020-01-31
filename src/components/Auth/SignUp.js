@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import validate from 'validate.js';
 import * as auth from './authHelper';
 import { Spin, Icon, message, DatePicker } from 'antd';
-import UploadImage from './UploadBox';
+import UploadImage from './UploadImage';
 
 const schema = {
   name: {
@@ -76,7 +76,8 @@ export default function SignUpForm({ props }) {
     date_of_birth: new Date(),
     security_answer_1: '',
     security_answer_2: '',
-    security_answer_3: ''
+    security_answer_3: '',
+    image: ''
   });
   const [errorState, setErrors] = useState({
     touched: {}
@@ -114,13 +115,18 @@ export default function SignUpForm({ props }) {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const user = await auth.register(form, props);
-      if(user.result) {
-        props.setMainInfo(user.result.userInfo);
-        props.history.push('/profile');
+      if(form.image){
+        const user = await auth.register(form, props);
+        if(user.result) {
+          props.setMainInfo(user.result.userInfo);
+          props.history.push('/profile');
+        } else {
+          setLoading(false);
+          message.error(user.message);
+        }
       } else {
+        message.error('add a profile image');
         setLoading(false);
-        message.error(user.message);
       }
     } catch (error) {
       setLoading(false);
@@ -203,7 +209,8 @@ export default function SignUpForm({ props }) {
       {
         hasError('security_answer_3') ? <p style={{ color: 'hsla(359,98%,68%,1)' }}>{errorState.errors.security_answer_3[0]}</p> : null
       }
-      <UploadImage />
+      <label>Select a Profile Image </label>
+      <UploadImage updateForm={updateForm} />
       <div className='form-buttons'>
         <button
           disabled={Object.size(errorState.errors) > 0 ? true : false }

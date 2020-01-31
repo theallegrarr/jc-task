@@ -1,20 +1,38 @@
-const cloudinary = require('cloudinary');
+import React, { useState } from 'react';
 
-const uploadImage = async (path) => {
-  return new Promise((resolve, reject) => {
-    cloudinary.config({ 
-      cloud_name: 'dirtjkiyy', 
-      api_key: '949477449327879', 
-      api_secret: 'mEUAteL58d-i1L8A5NA-QXu2_1g' 
-    });
+export default function UploadImage({ updateForm }) {
+  const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-    cloudinary.uploader.upload(path, function(error, result) {
-      resolve(result);
-      if(error)reject(error);
-    }); 
-  }).catch((error) => {
-    throw new Error(error);
-  });
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+
+    data.append('file', files[0]);
+    data.append('upload_preset', 'theloo');
+    setLoading(true);
+    const res = await fetch(
+      'http://api.cloudinary.com/v1_1/dirtjkiyy/image/upload',
+      {
+        method: 'POST',
+        body: data,
+      }
+    );
+    const file = await res.json();
+    setImage(file.secure_url);
+    setLoading(false);
+    updateForm('image', file.secure_url);
+  }
+
+  return (
+  <>
+    <input 
+      type='file'
+      name='file'
+      placeholder='select an image'
+      onChange={uploadImage}
+      />
+      {loading && <p>uploading image, please wait...</p>}
+      {image && <img src={image} alt='' style={{width: '300px'}}/>}
+  </>);
 }
-
-module.exports(uploadImage);

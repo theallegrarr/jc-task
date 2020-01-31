@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import SEO from 'react-seo-component';
 import ViewProfile from './ViewProfile';
 import EditProfile from './EditProfile';
+import UploadImage from '../Auth/UploadImage';
 import SetAnswers from './Answers';
 import SetPassword from './Password';
 import * as auth from '../Auth/authHelper';
@@ -11,16 +12,18 @@ import navimage from '../../assets/user.png';
 
 export default function Profile(){
   const [edit, setEdit] = useState(true);
-  const [loading, setLoading] = useState({ main: false, ans: false, pas: false });
+  const [loading, setLoading] = useState({ main: false, ans: false, pas: false, image: false });
   const [details, setDetails] = useState({});
   const [password, setPassword] = useState(false);
   const [answers, setAnswers] = useState(false);
+  const [image, setImage] = useState(false);
   const [form, setForm] = useState({
     name: '',
     phone_number: '',
     email: '',
     date_of_birth: '',
-    address: ''
+    address: '',
+    image: ''
   });
   const [answerForm, setAnswerForm] = useState({
     security_answer_1: '',
@@ -32,6 +35,12 @@ export default function Profile(){
     confirm_new_password: '',
     old_password: '',
   });
+  const [imageForm, setImageForm] = useState({
+    image: ''
+  })
+  const updateImage = (key, value) => {
+    setImageForm({ [key]: value });
+  }
   
   const toggleAnswer = async () => {
     if(answers === true){
@@ -45,12 +54,38 @@ export default function Profile(){
         message.success('update complete');
         setAnswers(!answers);
         setPassword(false);
+        setImage(false);
         setLoading({...loading, ans: false });
       }
     } else {
       setAnswers(!answers);
       setPassword(false);
+      setImage(false);
       setLoading({...loading, ans: false });
+    }
+  }
+
+  const toggleImage = async () => {
+    if(image === true){
+      setLoading({...loading, image: true });
+      const update = await auth.updateData(details.id, imageForm);
+        
+      if(update.status) {
+        const newDetails = await auth.getData(details.id);
+        await localStorage.setItem('user_info', JSON.stringify(newDetails.result));
+        await setDetails(newDetails.result);
+        await setForm(newDetails.result);
+        message.success('update complete');
+        setImage(!image);
+        setPassword(false);
+        setAnswers(false);
+        setLoading({...loading, image: false });
+      }
+    } else {
+      setAnswers(false);
+      setPassword(false);
+      setImage(true);
+      setLoading({...loading, image: false });
     }
   }
 
@@ -65,6 +100,7 @@ export default function Profile(){
         if(update.status){
           message.success('password update successful')
           setAnswers(false);
+          setImage(false);
           setLoading({...loading, pas: false });
           setPassword(!password);
         }else{
@@ -74,6 +110,7 @@ export default function Profile(){
       }
     } else {
       setAnswers(false);
+      setImage(false);
       setPassword(!password);
     }
   }
@@ -141,7 +178,7 @@ export default function Profile(){
       </div>
       {
         edit ?
-        <ViewProfile />
+        <ViewProfile info={form} setInfo={setForm} />
         :
         <EditProfile 
         form={form} 
@@ -157,7 +194,11 @@ export default function Profile(){
         <button
           onClick={toggleAnswer}
         >{loading.ans && <Spin indicator={antIcon} />}{' '}{answers ? 'Save Answers' : 'Update Answers' }</button>
+        <button
+          onClick={toggleImage}
+        >{loading.image && <Spin indicator={antIcon} />}{' '}{image ? 'Save Image' : 'Change Image' }</button>
       </div>
+        {image && <UploadImage updateForm={updateImage} />}
         {answers && <SetAnswers form={answerForm} setForm={setAnswerForm} />}
         {password && <SetPassword  form={passForm} setForm={setPassForm} />}
     </div>);
