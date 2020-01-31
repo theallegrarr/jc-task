@@ -43,17 +43,18 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
 
 ---
 
-## Install
+## Install this Project
+Open your terminal in a folder and run
 
-    $ git clone https://github.com/ORG/PROJECT.git
-    $ cd PROJECT
+    $ git clone https://github.com/theallegrarr/jc_backend.git
+    $ cd jc_backend
     $ npm install or yarn install
 
-## Start & watch
+## Start the app
 
     $ npm start
 
-## Simple build for production
+## Build the app for production
 
     $ npm run build
 
