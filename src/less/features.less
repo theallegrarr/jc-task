@@ -37,7 +37,8 @@
       flex-flow: wrap;
       width: 95%;
       margin-top: 20px;
-      justify-content: space-between;
+      justify-content: space-around;
+      align-content: center;
 
       .feature-card {
           display: flex;
@@ -51,6 +52,9 @@
           min-width: 200px;
           margin: 10px;
           z-index: 5;
+          @media (max-width: 500px) {
+            width: 45%;
+          }
 
           h4 {
               font-family: Muli;

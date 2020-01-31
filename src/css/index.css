@@ -664,7 +664,8 @@ textarea {
   flex-flow: wrap;
   width: 95%;
   margin-top: 20px;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-content: center;
 }
 .features-div .feature-cards .feature-card {
   display: flex;
@@ -678,6 +679,11 @@ textarea {
   min-width: 200px;
   margin: 10px;
   z-index: 5;
+}
+@media (max-width: 500px) {
+  .features-div .feature-cards .feature-card {
+    width: 45%;
+  }
 }
 .features-div .feature-cards .feature-card h4 {
   font-family: Muli;
