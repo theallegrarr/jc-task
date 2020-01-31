@@ -86,10 +86,10 @@ export default function footer(){
     </ul>
     
     <div className="legal">
-      <p>&copy; 2019 LinkUp. All rights reserved.</p>
+      <p>&copy; 2020 LinkUp. All rights reserved.</p>
       
       <div className="legal__links">
-        <span>Graphics from freepik</span>
+        <span>Graphics from freepik.com</span>
       </div>
     </div>
   </footer>

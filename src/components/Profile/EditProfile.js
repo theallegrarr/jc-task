@@ -19,7 +19,8 @@ export default function ViewProfile({ form, setForm, updateForm }){
         phone_number: JSON.parse(userInfo).phone_number,
         email: JSON.parse(userInfo).email,
         address: JSON.parse(userInfo).address,
-        date_of_birth: JSON.parse(userInfo).date_of_birth
+        date_of_birth: JSON.parse(userInfo).date_of_birth,
+        image: JSON.parse(userInfo).image
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,7 +37,7 @@ export default function ViewProfile({ form, setForm, updateForm }){
           (
           <>
             <div className='image-box'>
-              <img src={face} alt='user' />
+              <img src={form.image ? form.image : face} alt='user' />
             </div>
             <div><h3>Name</h3>
               <input 
