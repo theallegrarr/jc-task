@@ -11,7 +11,7 @@ export default function footer(){
         <h2>Contact</h2>
         
         <address>
-          5534 Somewhere In. The World 22193-10212 <br></br>
+          900271 Maitama Abuja, Nigeria <br></br>
               
           <NavLink className="footer__btn" to="mailto:example@linkup.com">Email Us</NavLink>
         </address>
