@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Hamburger from './Hamburger';
+import { Icon } from 'antd';
 import logo from '../../assets/user.png';
 
-export default function NavBar() {
+export default function NavBar({ userInfo }) {
+  const [ham, setHam] = useState(false);
 
   return(
     <div className='head-container'>
@@ -14,10 +17,36 @@ export default function NavBar() {
           </NavLink>
         </div>
         <div className='nav-links'>
-          <NavLink to="/profile" className='a'>Profile</NavLink>
-          <NavLink to="/signin" className='button'>Sign In/Register</NavLink>
+          {
+            userInfo.name ? 
+              <NavLink to="/profile" className='a'>Profile</NavLink>
+              :
+              null
+          }
+          <NavLink 
+            to={userInfo.name ? "/signout" : "/signin"} 
+            className='button'>{userInfo.name ? 'Sign Out' : 'Sign In/Register'}
+          </NavLink>
         </div>
+        <p 
+          className='ham-toggle'
+          onClick={() => script(setHam)}>
+          {ham ? 'X' : <Icon type='menu' />}
+        </p>
       </div>
+        <Hamburger userInfo={userInfo} />
     </div>
   )
+}
+
+function script(setHam){
+  const display = document.getElementsByClassName('menu-box')[0].style.display;
+
+  if(display === 'flex') { 
+    setHam(false);
+    document.getElementsByClassName('menu-box')[0].style.display = 'none';
+  } else {
+    setHam(true);
+    document.getElementsByClassName('menu-box')[0].style.display = 'flex';
+  }
 }
