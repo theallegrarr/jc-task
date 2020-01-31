@@ -32,7 +32,7 @@ export default function ViewProfile({ info, setInfo }){
             <div><h3>Email</h3>
             <h4>{info.email}</h4></div>
             <div><h3>Date Of Birth</h3>
-            <h4>{info.date_of_birth.split('T')[0]}</h4></div>
+            <h4>{typeof info.date_of_birth === 'string' ? info.date_of_birth.split('T')[0] : ''}</h4></div>
             <div><h3>Address</h3>
             <h4>{info.address}</h4></div>
           </>
