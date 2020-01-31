@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Spin, Icon } from 'antd';
 import face from '../../assets/face.png';
 
