@@ -474,6 +474,7 @@ textarea {
   display: flex;
   flex-direction: row;
   text-decoration: none;
+  max-height: 50px;
 }
 .head-container .nav-bar .nav-image .img-link .logo-text {
   font-family: Pacifico;
