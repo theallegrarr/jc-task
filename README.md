@@ -1,4 +1,4 @@
-Frontend Repo for [LinkUp](https://github.com/facebook/create-react-app).
+# Frontend Repo for [LinkUp](https://github.com/facebook/create-react-app).
 
 ## Requirements
 
@@ -11,10 +11,10 @@ You should be able to run the following command after the installation procedure
 below.
 
     $ node --version
-    v0.10.24
+    v12.13.0
 
     $ npm --version
-    1.3.21
+    6.12.0
 
 #### Node installation on OS X
 

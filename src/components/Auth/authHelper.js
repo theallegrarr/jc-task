@@ -1,10 +1,11 @@
 import axios from 'axios';
+const baseUrl = 'https://jc-backend.herokuapp.com';
 
 const register = async (user_data, props) => {
   try{
     const res = await axios({
       method: 'post',
-      url: `http://localhost:3300/api/user/register`,
+      url: `${baseUrl}/api/user/register`,
       data: user_data,
       headers: {
         'Content-Type': 'application/json'
@@ -28,7 +29,7 @@ const login = async (user_data, props) => {
   try {
     const res = await axios({
       method: 'post',
-      url: `http://localhost:3300/api/user/login`,
+      url: `${baseUrl}/api/user/login`,
       data: user_data,
       headers: {
         'Content-Type': 'application/json'
@@ -54,7 +55,7 @@ const updateData = async (id, user_data) => {
 
     const res = await axios({
         method: 'patch',
-        url: `http://localhost:3300/api/user/update-profile/${id}`,
+        url: `${baseUrl}/api/user/update-profile/${id}`,
         data: user_data,
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ const getData = async (id) => {
 
     const res = await axios({
         method: 'post',
-        url: `http://localhost:3300/api/user/get-data`,
+        url: `${baseUrl}/api/user/get-data`,
         data: {
           id: id,
         },
@@ -95,7 +96,7 @@ const changePassword = async (id, old_password, new_password) => {
     const token = await localStorage.getItem('token');
     const res = await axios({
         method: 'post',
-        url: `http://localhost:3300/api/user/change-password`,
+        url: `${baseUrl}/api/user/change-password`,
         data: {
           id: id,
           old_password: old_password,
