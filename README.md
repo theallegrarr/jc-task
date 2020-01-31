@@ -1,4 +1,4 @@
-# Frontend Repo for [LinkUp](https://github.com/facebook/create-react-app).
+# Frontend Repo for [LinkUp](https://jc-task.now.sh/).
 
 ## Requirements
 

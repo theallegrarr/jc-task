@@ -12,7 +12,7 @@ export default function UploadImage({ updateForm }) {
     data.append('upload_preset', 'theloo');
     setLoading(true);
     const res = await fetch(
-      'http://api.cloudinary.com/v1_1/dirtjkiyy/image/upload',
+      'https://api.cloudinary.com/v1_1/dirtjkiyy/image/upload',
       {
         method: 'POST',
         body: data,
