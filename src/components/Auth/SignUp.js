@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import validate from 'validate.js';
 import * as auth from './authHelper';
 import { Spin, Icon, message, DatePicker } from 'antd';
-import UploadImage from './UploadImage';
+import UploadImage from './ImageUpload';
 
 const schema = {
   name: {

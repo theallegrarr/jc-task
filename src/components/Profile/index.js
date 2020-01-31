@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import SEO from 'react-seo-component';
 import ViewProfile from './ViewProfile';
 import EditProfile from './EditProfile';
-import UploadImage from '../Auth/UploadImage';
+import UploadImage from '../Auth/ImageUpload';
 import SetAnswers from './Answers';
 import SetPassword from './Password';
 import * as auth from '../Auth/authHelper';
